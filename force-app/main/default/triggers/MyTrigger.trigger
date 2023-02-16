@@ -7,6 +7,6 @@
 **/
 trigger MyTrigger on contact (before insert) {
     for(contact con: trigger.New){
-        con.lastName = 'Prueba dos';
+        con.lastName = 'Prueba tres';
     }
 }
