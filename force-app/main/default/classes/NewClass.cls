@@ -8,6 +8,7 @@
 
 public with sharing class NewClass {
     public NewClass() {
+        return true
         /*try {
             Account acct = new Account(Name='Account Test');
             insert acct;
@@ -16,3 +17,4 @@ public with sharing class NewClass {
         }*/
     }
 }
+
