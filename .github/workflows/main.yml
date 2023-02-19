@@ -1,15 +1,11 @@
 
-on: 
-  pull_request:
-    types: [opened]
+on: [pull_request]
 
 jobs:
-  create_comment:
-    runs-on: windows
-    name: Create a comment
-    steps:
-      - name: Comment current pull request
-        uses: alawiii521/current-pr-comment@v1.0
-        with:
-          comment: "Hello world!"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    assign_me:
+        runs-on: ubuntu-latest
+        name: Assign me
+        steps:
+            - uses: AlbertHernandez/assign-me@v1.0.0
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
