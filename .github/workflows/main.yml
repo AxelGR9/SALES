@@ -1,15 +1,15 @@
-
-on: 
-  pull_request:
-    types: [opened]
+on: pull_request
 
 jobs:
-  create_comment:
-    runs-on: windows
-    name: Create a comment
+  example_comment_pr:
+    runs-on: ubuntu-latest
+    name: An example job to comment a PR
     steps:
-      - name: Comment current pull request
-        uses: alawiii521/current-pr-comment@v1.0
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
         with:
-          comment: "Hello world!"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: |
+            Hello world ! :wave:
