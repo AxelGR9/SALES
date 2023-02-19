@@ -8,17 +8,7 @@ on:
 jobs:
   example_comment_pr:
     runs-on: windows
-    name: An example job to comment a PR
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Comment PR
-        uses: allthatjazzleo/actions-pull-request-add-comment@master
-        if: >-
-          github.event_name == 'pull_request' || (github.event_name == 'issue_comment' 
-          && github.event.comment.body == '/hi' && github.actor == 'allthatjazzleo' )
-        with:
-          message: 'yoyo🤙🏻'
-          # message: "echo ${{ github.event.comment.body }}" dynamic message based on comment
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: github-actions-up-and-running/pr-comment@v1.0.0
+    with:
+      repo-token: ${{ secrets.GITHUB_TOKEN }}
+      message: Nice PR!👍
