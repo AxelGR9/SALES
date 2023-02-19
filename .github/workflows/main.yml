@@ -1,23 +1,15 @@
-name: Example
 
 on: 
   pull_request:
-  issue_comment:
-    types: [created, edited]
+    types: [opened]
 
 jobs:
-  example_comment_pr:
-    runs-on: ubuntu-latest
-    name: An example job to comment a PR
+  create_comment:
+    runs-on: windows-latest
+    name: Create a comment
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Comment PR
-        uses: allthatjazzleo/actions-pull-request-add-comment@master
-        if: >-
-          github.event_name == 'pull_request' || (github.event_name == 'issue_comment' )
+      - name: Comment current pull request
+        uses: alawiii521/current-pr-comment@v1.0
         with:
-          message: 'yoyo🤙🏻'
-          # message: "echo ${{ github.event.comment.body }}" dynamic message based on comment
+          comment: "Hello world!"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
