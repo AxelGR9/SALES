@@ -7,7 +7,7 @@
 **/
 public with sharing class HiWorld {
     public HiWorld() {
-    return trueff
+    return System.assert(false, )
     }
 
 
