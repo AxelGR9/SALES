@@ -1,21 +1,24 @@
-name: Review
-on:
-    workflow_dispatch:
-    pull_request:
-        types: [opened, synchronize, reopened]
-        branches: [main]
+name: Example
+
+on: 
+  pull_request:
+  issue_comment:
+    types: [created, edited]
+
 jobs:
-    review:
-        name: ReviewSource
-        runs-on: 'ubuntu-latest'
-        steps:
-            - name: Code Review
-              uses: packocz/sfdx-code-review-action@v0.3.0
-              with:
-                  source_path: ''"***.cls" "***.trigger" "***.js" "***.html" "***.page" "***.cmp" "***.component"'
-                  reject_threshold: 1
-                  max_comments: 20
-                  category: '!Documentation'
-                  engine: 'pmd, eslint'
-                  dfa_setting: 'dfa'
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+  example_comment_pr:
+    runs-on: ubuntu-latest
+    name: An example job to comment a PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Comment PR
+        uses: allthatjazzleo/actions-pull-request-add-comment@master
+        if: >-
+          github.event_name == 'pull_request' || (github.event_name == 'issue_comment' 
+          && github.event.comment.body == '/hi' && github.actor == 'AXELGR9' )
+        with:
+          message: 'yoyo🤙🏻'
+          # message: "echo ${{ github.event.comment.body }}" dynamic message based on comment
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
