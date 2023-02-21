@@ -1,11 +1,11 @@
-name: Review
-on:
-    pull_request:
-        types: [opened, synchronize, reopened]
+
+on: [pull_request]
 
 jobs:
-   # Update sfdx-project.json version number (e.g., 0.9.0.NEXT to 0.10.0.NEXT)
-- name: 'Extract package:version:create result data'
-  id: version-updater
-  uses: johnforeland/github-action-sfdx-version-updater
-       
+    assign_me:
+        runs-on: windows-latest
+        name: Assign me
+        steps:
+            - uses: AlbertHernandez/assign-me@v1.0.0
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
