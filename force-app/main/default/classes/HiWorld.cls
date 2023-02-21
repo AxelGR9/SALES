@@ -7,7 +7,7 @@
 **/
 public with sharing class HiWorld {
     public HiWorld() {
-    return false;444rr;;
+    return false;
     }
 
 
