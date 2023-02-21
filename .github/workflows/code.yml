@@ -3,7 +3,7 @@ on: [pull_request]
 
 jobs:
     assign_me:
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         name: Assign me
         steps:
             - uses: AlbertHernandez/assign-me@v1.0.0
